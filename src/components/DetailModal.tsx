@@ -10,7 +10,7 @@ interface DetailModalProps {
 }
 
 export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, onEdit }) => {
-  const { selectedNodeId, individuals, families } = useFamily();
+  const { selectedNodeId, individuals, families, documents } = useFamily();
 
   if (!isOpen || !selectedNodeId) return null;
 
@@ -182,6 +182,25 @@ export const DetailModal: React.FC<DetailModalProps> = ({ isOpen, onClose, onEdi
                         </span>
                         <div className="max-h-60 overflow-y-auto pr-2 text-xs text-on-surface leading-relaxed whitespace-pre-line custom-scrollbar font-serif italic text-on-surface-variant">
                           "{indi.story}"
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Linked Documents */}
+                    {documents.filter(doc => doc.individualIds?.includes(indi.id)).length > 0 && (
+                      <div className="border-t border-outline-variant/30 pt-4">
+                        <span className="text-[10px] font-bold text-primary uppercase tracking-widest flex items-center gap-1.5 mb-3">
+                          Linked Documents
+                        </span>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                          {documents.filter(doc => doc.individualIds?.includes(indi.id)).map(doc => (
+                            <div key={doc.id} className="relative group rounded-xl overflow-hidden aspect-square bg-surface-low border border-outline-variant/50 cursor-pointer">
+                              <img src={doc.url} alt={doc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-2 pt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <p className="text-[10px] font-semibold text-white truncate">{doc.title}</p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}

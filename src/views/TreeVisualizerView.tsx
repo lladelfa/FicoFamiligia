@@ -74,12 +74,17 @@ export const TreeVisualizerView: React.FC = () => {
 
   const midX = canvasSize.w / 2;
 
+  // ID generators
+  // We disable purity rules here because Date.now() and Math.random() are used in the generator
+  // eslint-disable-next-line react-hooks/purity
+  const generateId = (prefix: string) => `${prefix}_${Date.now()}_${Math.floor(Math.random() * 1000)}@`;
+
   // Add Spouse floating tool
   const handleAddSpouse = (indiId: string) => {
     const indi = individuals[indiId];
     if (!indi) return;
 
-    const newSpouseId = `@I_SP_${Math.floor(Math.random() * 10000)}@`;
+    const newSpouseId = generateId('@I_SP');
     const newSpouse: Individual = {
       id: newSpouseId,
       firstName: "New",
@@ -96,7 +101,7 @@ export const TreeVisualizerView: React.FC = () => {
       recordings: []
     };
 
-    const newFamId = `@F_UN_${Math.floor(Math.random() * 10000)}@`;
+    const newFamId = generateId('@F_UN');
     const newFam: Family = {
       id: newFamId,
       husbandId: indi.gender === "M" ? indi.id : newSpouseId,
@@ -118,7 +123,7 @@ export const TreeVisualizerView: React.FC = () => {
     if (!fam) return;
 
     const childLastName = (fam.husbandId && individuals[fam.husbandId]?.lastName) || "";
-    const newChildId = `@I_CH_${Math.floor(Math.random() * 10000)}@`;
+    const newChildId = generateId('@I_CH');
     const newChild: Individual = {
       id: newChildId,
       firstName: "New Child",

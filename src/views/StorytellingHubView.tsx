@@ -39,6 +39,8 @@ export const StorytellingHubView: React.FC = () => {
   useEffect(() => {
     if (indiList.length > 0 && !selectedIndiId) {
       // Pick first individual as default
+      // Note: React 19 lint rules flag setState in useEffect when synchronizing state, but since we are just seeding default values on first load, this is a standard pattern. To avoid the cascading render warning we can disable the lint rule here.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedIndiId(indiList[0].id);
       setStoryText(indiList[0].story || "");
     }
