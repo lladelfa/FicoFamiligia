@@ -2,6 +2,7 @@ import React, { useState, useRef, useMemo } from "react";
 import { useFamily } from "../context/FamilyContext";
 import { Plus, Search, Trash2, ShieldCheck, Upload, Calendar, X, AlertCircle } from "lucide-react";
 import type { ArchiveDocument } from "../utils/gedcomProcessor";
+import { processImageFile } from "../utils/imageProcessor";
 
 export const DocumentArchiveView: React.FC = () => {
   const { documents, addDocument, deleteDocument } = useFamily();
@@ -17,6 +18,8 @@ export const DocumentArchiveView: React.FC = () => {
   const [docTags, setDocTags] = useState("");
   const [docDescription, setDocDescription] = useState("");
   const [docFileUrl, setDocFileUrl] = useState<string | null>(null);
+  const [linkedIndividuals, setLinkedIndividuals] = useState<string[]>([]);
+  const { individuals } = useFamily();
 
   const uploadInputRef = useRef<HTMLInputElement>(null);
 
@@ -78,25 +81,24 @@ export const DocumentArchiveView: React.FC = () => {
     setDocTags("");
     setDocDescription("");
     setDocFileUrl(null);
+    setLinkedIndividuals([]);
   };
 
-  const handleFileSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelection = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const base64 = event.target?.result as string;
-      if (base64) {
-        setDocFileUrl(base64);
-        // Pre-fill title if empty
-        if (!docTitle) {
-          const cleanName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
-          setDocTitle(cleanName);
-        }
+    try {
+      const base64 = await processImageFile(file, 1200, 0.8);
+      setDocFileUrl(base64);
+      // Pre-fill title if empty
+      if (!docTitle) {
+        const cleanName = file.name.substring(0, file.name.lastIndexOf(".")) || file.name;
+        setDocTitle(cleanName);
       }
-    };
-    reader.readAsDataURL(file);
+    } catch (err) {
+      console.error("Failed to process document image:", err);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -112,6 +114,7 @@ export const DocumentArchiveView: React.FC = () => {
       date: docDate || "Undated",
       category: docCategory,
       tags: docTags.split(",").map(t => t.trim()).filter(Boolean),
+      individualIds: linkedIndividuals,
       url: docFileUrl,
       description: docDescription,
       verified: true,
@@ -433,6 +436,36 @@ export const DocumentArchiveView: React.FC = () => {
               </div>
 
               {/* Description */}
+              <div>
+                <label className="text-[9px] font-bold text-on-surface-variant/50 uppercase tracking-widest block mb-1.5 ml-1">
+                  Linked Individuals
+                </label>
+                <div className="max-h-32 overflow-y-auto bg-surface-low border border-outline-variant rounded-xl p-2 custom-scrollbar">
+                  {Object.values(individuals).map(indi => (
+                    <label key={indi.id} className="flex items-center gap-2 p-1.5 hover:bg-surface-lowest rounded cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={linkedIndividuals.includes(indi.id)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setLinkedIndividuals(prev => [...prev, indi.id]);
+                          } else {
+                            setLinkedIndividuals(prev => prev.filter(id => id !== indi.id));
+                          }
+                        }}
+                        className="rounded text-primary focus:ring-primary h-3 w-3"
+                      />
+                      <span className="text-xs text-on-surface">
+                        {indi.firstName} {indi.lastName}
+                      </span>
+                    </label>
+                  ))}
+                  {Object.keys(individuals).length === 0 && (
+                    <p className="text-xs text-on-surface-variant/50 p-2 text-center">No individuals found in tree.</p>
+                  )}
+                </div>
+              </div>
+
               <div>
                 <label className="text-[9px] font-bold text-on-surface-variant/70 uppercase tracking-widest block mb-1.5">
                   Description

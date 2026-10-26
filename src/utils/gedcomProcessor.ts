@@ -12,6 +12,7 @@ export interface ArchiveDocument {
   date: string;
   category: "Photos" | "Documents" | "Letters";
   tags: string[];
+  individualIds?: string[];
   url: string;
   description: string;
   verified: boolean;
@@ -122,13 +123,26 @@ export function parseGedcom(rawText: string): FamilyTreeData {
         switch (tag) {
           case "NAME": {
             // E.g., "Vincenzo /Oliveri/"
-            const nameParts = value.split("/");
-            currentIndi.firstName = nameParts[0]?.trim() || "";
-            currentIndi.lastName = nameParts[1]?.trim() || "";
+            if (value.includes("/")) {
+                const nameParts = value.split("/");
+                currentIndi.firstName = nameParts[0]?.trim() || "";
+                currentIndi.lastName = nameParts[1]?.trim() || "";
+            } else {
+                // Fallback for names without slashes (e.g., "Vincenzo Oliveri")
+                const lastSpace = value.lastIndexOf(" ");
+                if (lastSpace !== -1) {
+                    currentIndi.firstName = value.substring(0, lastSpace).trim();
+                    currentIndi.lastName = value.substring(lastSpace + 1).trim();
+                } else {
+                    currentIndi.firstName = value.trim();
+                    currentIndi.lastName = "";
+                }
+            }
             break;
           }
           case "SEX":
-            currentIndi.gender = (value.toUpperCase() === "M" ? "M" : value.toUpperCase() === "F" ? "F" : "U") as any;
+            const genderVal = value.toUpperCase();
+            currentIndi.gender = (genderVal === "M" ? "M" : genderVal === "F" ? "F" : "U") as "M" | "F" | "U";
             break;
           case "BIRT":
             currentEvent = "BIRT";

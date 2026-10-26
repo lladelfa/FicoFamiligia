@@ -3,6 +3,7 @@ import { useFamily } from "../context/FamilyContext";
 import { X, Trash2, Calendar, Code, Heart, Upload } from "lucide-react";
 import type { Individual, Family } from "../utils/gedcomProcessor";
 import { DateInput } from "./DateInput";
+import { processImageFile } from "../utils/imageProcessor";
 
 interface EditSidebarProps {
   isOpen: boolean;
@@ -142,17 +143,15 @@ export const EditSidebar: React.FC<EditSidebarProps> = ({ isOpen, onClose }) => 
                 type="file"
                 id={`file-upload-${indi.id}`}
                 accept="image/*"
-                onChange={(e) => {
+                onChange={async (e) => {
                   const file = e.target.files?.[0];
                   if (!file) return;
-                  const reader = new FileReader();
-                  reader.onload = (event) => {
-                    const result = event.target?.result as string;
-                    if (result) {
-                      handleFieldChange(indi.id, "profileUrl", result);
-                    }
-                  };
-                  reader.readAsDataURL(file);
+                  try {
+                    const result = await processImageFile(file, 800, 0.8);
+                    handleFieldChange(indi.id, "profileUrl", result);
+                  } catch (err) {
+                    console.error("Failed to process image:", err);
+                  }
                 }}
                 className="hidden"
               />

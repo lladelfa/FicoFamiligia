@@ -175,30 +175,71 @@ export function computeTreeLayout(
     });
   }
 
-  // 5. Position nodes horizontally (centering each row around X=0)
+  // 5. Position nodes horizontally
+  // First, place roots, then place children under their parents to avoid crossing lines
+  // To keep it simple, we do a top-down approach positioning children relative to their parents
+
+  // Track assigned X coordinates to prevent overlaps
+  const levelXTracker: Record<number, number> = {};
+  for (let l = 0; l <= maxLevel; l++) {
+    levelXTracker[l] = 0; // Initialize tracking
+  }
+
+  // To center the whole tree later
+  let minX = Infinity;
+  let maxX = -Infinity;
+
+  // We assign x coords level by level
   for (let l = 0; l <= maxLevel; l++) {
     const rowNodes = levelsGrid[l];
     if (rowNodes.length === 0) continue;
 
-    // Calculate total width of the row, including gaps
-    let totalWidth = 0;
-    for (let i = 0; i < rowNodes.length; i++) {
-      totalWidth += rowNodes[i].width;
-      if (i < rowNodes.length - 1) {
-        totalWidth += COL_SPACING;
-      }
-    }
-
-    // Centering calculation: start placing from leftX
-    let currentX = -totalWidth / 2;
-    const yCoord = l * ROW_SPACING + 100; // Add offset for top padding
+    const yCoord = l * ROW_SPACING + 100;
 
     rowNodes.forEach(node => {
-      node.x = currentX + node.width / 2;
+      let desiredX = levelXTracker[l];
+
+      // If the node has parents in the level above, center it under them
+      if (l > 0) {
+        const parentLevelNodes = levelsGrid[l - 1];
+        let parentNodeMatch: TreeNode | null = null;
+
+        for (const pNode of parentLevelNodes) {
+          if (pNode.type === "union") {
+            const fam = families[pNode.id];
+            if (fam && fam.children.some(cid => node.memberIds.includes(cid))) {
+              parentNodeMatch = pNode;
+              break;
+            }
+          }
+        }
+
+        if (parentNodeMatch) {
+          // If we have a parent, we want our X to be at least parent X, but maybe shifted to center siblings
+          // A simple approach: we want to center this child relative to parent, but respect the minimum tracker to avoid overlaps
+          // Try to put it exactly under the parent
+          desiredX = Math.max(levelXTracker[l], parentNodeMatch.x - (node.width / 2) + 20); // The +20 gives a slight bias to right
+        }
+      }
+
+      node.x = desiredX + node.width / 2;
       node.y = yCoord;
-      currentX += node.width + COL_SPACING;
+
+      // Update tracker for next node in this level
+      levelXTracker[l] = node.x + (node.width / 2) + COL_SPACING;
+
+      minX = Math.min(minX, node.x - node.width / 2);
+      maxX = Math.max(maxX, node.x + node.width / 2);
     });
   }
+
+  // Pass 5b. Center the tree by shifting everything
+  const treeWidth = maxX - minX;
+  const shiftAmount = - (minX + (treeWidth / 2));
+
+  nodes.forEach(node => {
+    node.x += shiftAmount;
+  });
 
   // 6. Draw connection lines (Bezier S-curves)
   const lines: TreeLine[] = [];
