@@ -1,0 +1,174 @@
+0 HEAD
+1 SOUR KINSHIP_FLOW_VISUALIZER
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Vincenzo /Oliveri/
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1892
+2 PLAC Valguarnera Caropepe, Sicily, Italy
+1 DEAT
+2 DATE 24 NOV 1964
+2 PLAC New York, NY, USA
+1 _PHOTO https://lh3.googleusercontent.com/aida-public/AB6AXuC7gGOeCrM-KTMv09cx2v8bzJ7nRAhhthTu9zamCOOxGlCDN9qHQkCph4jvTZmnCTFG6izM-AN3Oj2BZP7HOv8FirnhsJq--yaoik018SR_Lxq4jIIFdJubq_UV_9OceOKDzXU_CoY2zyfWtVmxlmNogFExHBo31M2iN058zPx4AHcx8R-qR9crmtZ3NWtS7yqeVz8PukxZbVN-tdcpulxhvQsGbwZFn0aaRkhqokrn3v3OiGooTP0aRZWbNXcpuSnF8n8SA0Encfzm
+1 _TAGS PIONEER, IMMIGRANT
+1 NOTE Vincenzo immigrated to New York in 1913, working on the railways
+2 CONC before opening a small grocery store.
+1 _STORY Vincenzo left Sicily in the spring of 1913 with a single suitcase
+2 CONT containing two shirts, a loaf of pane duro, and a handful of dried figs.
+2 CONT He worked long days on the Catskills railroad under blistering heat,
+2 CONT writing letters to his beloved Epifania every Sunday without fail.
+0 @I2@ INDI
+1 NAME Epifania /Camiola/
+1 SEX F
+1 BIRT
+2 DATE 04 OCT 1895
+2 PLAC Valguarnera Caropepe, Sicily, Italy
+1 DEAT
+2 DATE 18 APR 1978
+2 PLAC New York, NY, USA
+1 _PHOTO https://lh3.googleusercontent.com/aida-public/AB6AXuD9e3lWk0u
+1 _TAGS MATRIARCH, ARTISAN
+1 NOTE Epifania was a skilled seamstress who joined Vincenzo in New York
+2 CONC in 1920.
+1 _STORY Epifania was the pillar of the family. Known for her delicate lace work
+2 CONT and her legendary recipes, she made sure that every child and grandchild
+2 CONT learned the language, the songs, and the cooking of Sicily.
+0 @I3@ INDI
+1 NAME Maria /Oliveri/
+1 SEX F
+1 BIRT
+2 DATE 14 MAR 1924
+2 PLAC Valguarnera Caropepe, Sicily, Italy
+1 DEAT
+2 DATE 09 SEP 2005
+2 PLAC San Jose, CA, USA
+1 _PHOTO https://lh3.googleusercontent.com/aida-public/AB6AXuA-Yzb5ZYUJow-sjBF0T4oDUVdI1fp1NiM2S2uEjvS5nBUl8bDGc7bOs0hhjMWoPxwiAJlDZMbqtwYFEB_OJGkflefTkCL49P0Sh-zUPsiJ6BTD2Xmt9RkrRsEurDbtrxGVAyKxHPWS6qAvpz8uuABgntQjKazqB4iRMRKvCDKu2N1ojl8pbKKk-Y-8E_Ucs0lFwhtKEG4ZDpj_V4JKtR_eUaTgq8J7giX9ZlirXPKfjvEQw5sf6H304KxqB3X3g5ecnpLqEsuviwE-
+1 _TAGS LEGACY, TEACHER
+1 NOTE Maria was a schoolteacher in New York before moving to California.
+1 _STORY Maria grew up in the bustling streets of Manhattan. She was the first
+2 CONT in the family to attend university, graduating with a degree in
+2 CONT literature. She taught grammar for 38 years, instilling a deep love
+2 CONT of books in generations of students.
+0 @I4@ INDI
+1 NAME Placido /Oria/
+1 SEX M
+1 BIRT
+2 DATE 22 JUL 1920
+2 PLAC Catania, Sicily, Italy
+1 DEAT
+2 DATE 15 FEB 2011
+2 PLAC San Jose, CA, USA
+1 _PHOTO https://lh3.googleusercontent.com/aida-public/AB6AXuDdV21vZNuKCT7bAJWBG06x36sxpLse4ZW63yj-td1LmD91psmjWlAc6WZluyETbaR8VSnm-nAd664dNxtQrlfNO5pFxUS8QSxE8wncV8DUuKDu9XPs6mmkzzcXU1EL28GvI9VCskiJvXOt8D-E9DZSQgoB7ypCMZQcUAgjQ5_wAyWF6nBAPf3pcOq1IrxyotjQ_fgFKug9MIR0uKOzmdoD7sEy6eeQ3RZJLTtd9UaVT3FB8wfimjEcPOZ14ELlIQkNWOtGplAw4-v7
+1 _TAGS CRAFTSMAN, LEGACY
+1 NOTE Placido served as a builder and carpenter, renowned for custom woodwork.
+1 _STORY Placido could look at a piece of raw walnut and see a cabinet waiting
+2 CONT to be carved. His hands were weathered, but his carpentry was as precise
+2 CONT as poetry. He built the very dining table that the Oria family gathers
+2 CONT around every Sunday.
+0 @I5@ INDI
+1 NAME Giuseppe /Oliveri/
+1 SEX M
+1 BIRT
+2 DATE 02 FEB 1928
+2 PLAC New York, NY, USA
+1 DEAT
+2 DATE 11 NOV 2015
+2 PLAC Brooklyn, NY, USA
+1 _PHOTO 
+1 _TAGS Brooklyn, LEGACY
+1 NOTE Giuseppe was a local tailor who took over his father's shop.
+1 _STORY Giuseppe spent his entire life in Brooklyn. He took over the tailor shop
+2 CONT on Flatbush Ave and ran it for fifty years. He was known for his quick wit,
+2 CONT his sharp suits, and his love of jazz records.
+0 @I6@ INDI
+1 NAME Concetta /Bella/
+1 SEX F
+1 BIRT
+2 DATE 19 AUG 1932
+2 PLAC Valguarnera Caropepe, Sicily, Italy
+1 DEAT
+2 DATE PRESENT
+1 _PHOTO 
+1 _TAGS CHEF, MATRIARCH
+1 NOTE Concetta is an active cook and storyteller, living in Brooklyn.
+1 _STORY Concetta immigrated in the fifties after meeting Giuseppe on a visit back
+2 CONT to Sicily. Her kitchen in Brooklyn is a sacred space where the family
+2 CONT recipes for pasta al forno and cannoli are kept alive.
+0 @I7@ INDI
+1 NAME Marco /Oria/
+1 SEX M
+1 BIRT
+2 DATE 24 OCT 1956
+2 PLAC Brooklyn, NY, USA
+1 DEAT
+2 DATE PRESENT
+1 _PHOTO https://lh3.googleusercontent.com/aida-public/AB6AXuCMGP1akgrtT2_uhZC0coxoWF-2ElVsHyO6MbTjFUDwngMcJI_Nz8TX58VGCfodUNyjhtxP7yEogmCpEqD-BfWXdj2_LXyR6N6bRuU1T8IIGM4jNEot6SrjbLaNxPko7YXrPuEe3MOclzRNvAGMEjI3gBPPmOdB1pNeM13tu-02Ic3rsNbwziEVk03RPu7Nh6DA2D6eic8M4MNdh0y4nt6jPsP6VW4anWto4uYMFYROXNHNsUuqt99uJTEI39JsdQsA_5xnztkMjKVa
+1 _TAGS ARCHIVIST, STORYTELLER
+1 NOTE Marco is the current family archivist and developer of this visualizer.
+1 _STORY Marco developed the Kinship Flow Visualizer to preserve his grandparents'
+2 CONT stories. He believes that stories not written down are stories forgotten,
+2 CONT and has spent years scanning old certificates and recording his aunt's voice.
+0 @I8@ INDI
+1 NAME Francesca /Oria/
+1 SEX F
+1 BIRT
+2 DATE 10 MAY 1960
+2 PLAC New York, NY, USA
+1 DEAT
+2 DATE PRESENT
+1 _PHOTO 
+1 _TAGS ARTIST
+1 NOTE Francesca is a graphic artist based in Portland, Oregon.
+1 _STORY Francesca is an illustrator. She loves painting portraits of family members
+2 CONT from black-and-white photos, capturing their expressions in watercolor.
+0 @I9@ INDI
+1 NAME Salvatore /Oliveri/
+1 SEX M
+1 BIRT
+2 DATE 17 NOV 1962
+2 PLAC Brooklyn, NY, USA
+1 DEAT
+2 DATE PRESENT
+1 _PHOTO 
+1 _TAGS MUSICIAN
+1 NOTE Salvatore plays double bass in local jazz bands in New York.
+0 @I10@ INDI
+1 NAME Epifania /Oliveri/
+1 SEX F
+1 BIRT
+2 DATE 09 SEP 1966
+2 PLAC Brooklyn, NY, USA
+1 DEAT
+2 DATE PRESENT
+1 _PHOTO 
+1 _TAGS WRITER
+1 NOTE Epifania is an editor and author, named after her grandmother.
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I5@
+1 MARR
+2 DATE 12 SEP 1915
+2 PLAC Valguarnera Caropepe, Sicily, Italy
+0 @F2@ FAM
+1 HUSB @I4@
+1 WIFE @I3@
+1 CHIL @I7@
+1 CHIL @I8@
+1 MARR
+2 DATE 25 JUN 1950
+2 PLAC New York, NY, USA
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+1 CHIL @I9@
+1 CHIL @I10@
+1 MARR
+2 DATE 14 JUN 1958
+2 PLAC Brooklyn, NY, USA
+0 TRLR

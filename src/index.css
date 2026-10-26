@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply font-hanken bg-background text-on-surface antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-epilogue font-bold;
+  }
+}
+
+/* Custom Scrollbars matching Modern Orchard */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4ed;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c2c9bb;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d5a27;
+}
+
+/* Glassmorphic Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.glass-panel-dark {
+  background: rgba(18, 19, 25, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Canvas Grid Background */
+.canvas-grid-pattern {
+  background-image: radial-gradient(rgba(26, 26, 26, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.canvas-grid-pattern-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+/* Waveform Visualizer Animation */
+.waveform-bar {
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 32px; }
+}
+
+/* Custom transitions and interactive scaling */
+.interactive-node {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-node:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px -10px rgba(45, 90, 39, 0.2);
+}
+
+/* Custom animation for panel slide-in */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
